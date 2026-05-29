@@ -1,0 +1,77 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "cyberscanner"
+version = "0.1.0"
+description = "Open-source vulnerability scanner for Python and JavaScript projects — CLI + Python library"
+readme = "README.md"
+requires-python = ">=3.8"
+license = { text = "MIT" }
+authors = [
+    { name = "Subham Divakar", email = "shubham.divakar@gmail.com" },
+]
+keywords = [
+    "security", "vulnerability", "scanner", "CVE", "GHSA",
+    "dependencies", "secrets", "sast", "osv", "pypi", "npm",
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Intended Audience :: System Administrators",
+    "License :: OSI Approved :: MIT License",
+    "Natural Language :: English",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Security",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Software Development :: Quality Assurance",
+    "Topic :: System :: Systems Administration",
+    "Environment :: Console",
+    "Typing :: Typed",
+]
+dependencies = [
+    "typer[all]>=0.9.0",
+    "httpx>=0.24.0",
+    "pydantic>=2.0.0",
+    "packaging>=21.0",
+    'tomli>=1.1.0; python_version < "3.11"',
+]
+
+[project.urls]
+Homepage       = "https://github.com/shubham10divakar/cyberscanner"
+Repository     = "https://github.com/shubham10divakar/cyberscanner"
+Documentation  = "https://github.com/shubham10divakar/cyberscanner#readme"
+"Bug Tracker"  = "https://github.com/shubham10divakar/cyberscanner/issues"
+Changelog      = "https://github.com/shubham10divakar/cyberscanner/releases"
+
+[project.scripts]
+cyberscanner = "cyberscanner.cli:app"
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "pytest-asyncio>=0.21",
+    "respx>=0.20",
+    "build>=1.0",
+    "twine>=5.0",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/cyberscanner"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = [
+    "smoke: end-to-end smoke tests",
+    "live: requires internet access to external APIs",
+    "cli: tests that invoke the CLI via subprocess",
+    "api: tests that use the Python API directly",
+]

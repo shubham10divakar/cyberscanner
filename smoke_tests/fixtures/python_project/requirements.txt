@@ -1,0 +1,7 @@
+# Known-vulnerable pinned versions — used by smoke tests to verify OSV returns real results
+requests==2.6.0
+Pillow==9.0.0
+urllib3==1.26.4
+cryptography==3.3.1
+PyYAML==5.3.1
+django==2.2.0

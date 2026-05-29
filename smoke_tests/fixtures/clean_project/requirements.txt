@@ -1,0 +1,4 @@
+# Recent safe versions — smoke test should return zero vulnerabilities
+typer==0.15.0
+httpx==0.28.0
+pydantic==2.10.0

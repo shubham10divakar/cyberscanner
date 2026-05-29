@@ -1,0 +1,13 @@
+{
+  "name": "smoke-test-js-project",
+  "version": "1.0.0",
+  "description": "Known-vulnerable JS packages for smoke testing",
+  "dependencies": {
+    "lodash": "4.17.15",
+    "axios": "0.21.1",
+    "express": "4.17.1"
+  },
+  "devDependencies": {
+    "jest": "27.0.0"
+  }
+}
