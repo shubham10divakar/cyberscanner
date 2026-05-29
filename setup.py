@@ -6,22 +6,52 @@ with io.open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
 setup(
+    # -------------------------------------------------------------------
+    # Identity
+    # -------------------------------------------------------------------
     name="cyberscanner",
     version="0.1.0",
+    description=(
+        "Open-source vulnerability scanner for Python and JavaScript projects "
+        "— CLI tool and Python library"
+    ),
+    long_description=long_description,
+    long_description_content_type="text/markdown",  # ensures PyPI renders README properly
+
+    # -------------------------------------------------------------------
+    # Author
+    # -------------------------------------------------------------------
     author="Subham Divakar",
     author_email="shubham.divakar@gmail.com",
-    description="Open-source vulnerability scanner for Python and JavaScript projects — CLI tool and Python library",
-    long_description=long_description,
-    long_description_content_type="text/markdown",
+
+    # -------------------------------------------------------------------
+    # License
+    # -------------------------------------------------------------------
+    license="MIT",
+    license_files=["LICENSE"],
+
+    # -------------------------------------------------------------------
+    # URLs (shown as sidebar links on PyPI)
+    # -------------------------------------------------------------------
     url="https://github.com/shubham10divakar/cyberscanner",
     project_urls={
-        "Bug Tracker":   "https://github.com/shubham10divakar/cyberscanner/issues",
+        "Homepage":      "https://github.com/shubham10divakar/cyberscanner",
+        "Repository":    "https://github.com/shubham10divakar/cyberscanner",
         "Documentation": "https://github.com/shubham10divakar/cyberscanner#readme",
+        "Bug Tracker":   "https://github.com/shubham10divakar/cyberscanner/issues",
         "Changelog":     "https://github.com/shubham10divakar/cyberscanner/releases",
     },
+
+    # -------------------------------------------------------------------
+    # Package discovery — src/ layout
+    # -------------------------------------------------------------------
     package_dir={"": "src"},
     packages=find_packages(where="src"),
     include_package_data=True,
+
+    # -------------------------------------------------------------------
+    # Runtime dependencies
+    # -------------------------------------------------------------------
     install_requires=[
         "typer[all]>=0.9.0",
         "httpx>=0.24.0",
@@ -29,6 +59,11 @@ setup(
         "packaging>=21.0",
         'tomli>=1.1.0; python_version < "3.11"',
     ],
+
+    # -------------------------------------------------------------------
+    # Optional / development dependencies
+    # Install with:  pip install cyberscanner[dev]
+    # -------------------------------------------------------------------
     extras_require={
         "dev": [
             "pytest>=7.0",
@@ -38,11 +73,20 @@ setup(
             "twine>=5.0",
         ],
     },
+
+    # -------------------------------------------------------------------
+    # CLI entry points
+    # After install: `cyberscanner` command is available in the terminal
+    # -------------------------------------------------------------------
     entry_points={
         "console_scripts": [
             "cyberscanner=cyberscanner.cli:app",
         ],
     },
+
+    # -------------------------------------------------------------------
+    # PyPI classifiers — https://pypi.org/classifiers/
+    # -------------------------------------------------------------------
     classifiers=[
         "Development Status :: 3 - Alpha",
         "Intended Audience :: Developers",
@@ -60,11 +104,27 @@ setup(
         "Topic :: Security",
         "Topic :: Software Development :: Libraries :: Python Modules",
         "Topic :: Software Development :: Quality Assurance",
+        "Topic :: System :: Systems Administration",
         "Environment :: Console",
+        "Typing :: Typed",
     ],
+
+    # -------------------------------------------------------------------
+    # Search keywords (shown on PyPI)
+    # -------------------------------------------------------------------
     keywords=[
         "security", "vulnerability", "scanner", "CVE", "GHSA",
         "dependencies", "secrets", "sast", "osv", "pypi", "npm",
+        "dependency-scanning", "secret-detection", "supply-chain",
     ],
+
+    # -------------------------------------------------------------------
+    # Python version requirement
+    # -------------------------------------------------------------------
     python_requires=">=3.8",
+
+    # -------------------------------------------------------------------
+    # Zip safety — install as a real directory, not a zip/egg
+    # -------------------------------------------------------------------
+    zip_safe=False,
 )
