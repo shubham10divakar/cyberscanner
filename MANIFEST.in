@@ -1,0 +1,29 @@
+# Files to include in the source distribution (sdist / .tar.gz)
+# The wheel (.whl) uses package_data / include_package_data from setup.py
+
+# Essential docs
+include LICENSE
+include README.md
+include CHANGELOG.md
+include PUBLISHING.md
+include pyproject.toml
+include setup.py
+
+# Source
+recursive-include src *.py *.typed
+
+# Tests (useful for downstream packagers e.g. Linux distros)
+recursive-include tests *.py
+recursive-include tests/fixtures *
+recursive-include smoke_tests *.py *.md
+recursive-include smoke_tests/fixtures *
+
+# Exclude compiled files and caches
+global-exclude *.pyc
+global-exclude *.pyo
+global-exclude __pycache__
+global-exclude *.egg-info
+prune dist
+prune build
+prune .venv
+prune .git
